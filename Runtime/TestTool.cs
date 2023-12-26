@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace IboshEngine.Test
+namespace IboshEngine.Runtime
 {
     public class TestTool : MonoBehaviour
     {
