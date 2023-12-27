@@ -3,13 +3,13 @@ using UnityEngine;
 namespace IboshEngine.Runtime.Singleton
 {
     using Debugger;
-    
+
     [DefaultExecutionOrder(-5)]
-    public class IboshSingleton<T> : MonoBehaviour where T : MonoBehaviour
+    public abstract class IboshSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         public static T Instance { get; private set; }
 
-        public virtual void Awake()
+        protected virtual void Awake()
         {
             if (Instance == null)
             {

@@ -1,0 +1,16 @@
+{
+    "name": "IboshSama.IboshEngine.Samples",
+    "rootNamespace": "IboshSama.IboshEngine.Samples",
+    "references": [
+        "GUID:4bd600fa7d8b8c84e9e2ba3ac59a614a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
