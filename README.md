@@ -81,11 +81,17 @@
 
 ### Features
 **- Singleton Design:** Ensures a single instance for managing background music.
+
 **- Audio Mixer Integration:** Utilizes Unity's Audio Mixer Group and Snapshot for dynamic audio control.
+
 **- Fading Functionality:** Smooth transitions with customizable fade-in and fade-out times.
+
 **- Object Pool Pattern:** Efficiently handles audio playback for improved performance.
+
 **- User Preferences:** Allows volume adjustments and stores preferences using Unity's PlayerPrefs system.
+
 **- Unity Editor Integration:** Includes methods for playing, pausing, stopping music, and adjusting volume.
+
 ### Example
 <img src="https://github.com/ibrasln/ibosh-engine/assets/75907428/76240bb2-ea40-4c84-a11f-8898384920be" alt="image" width="75%" height="auto"> 
 
@@ -95,10 +101,16 @@
 
 ### Features
 **- Singleton Design:** Ensures a single instance for managing sound effects within Unity.
+
 **- Object Pool Integration:** Utilizes an efficient object pooling mechanism for recycling sound effect instances.
+
 **- User Preferences:** Integrates with Unity's PlayerPrefs system for persisting sound effect volume preferences.
+
 **- Flexible Coroutines:** Implements coroutine-based mechanisms for timed disabling of sound effects.
+
 **- Customizable Sound Effect Data:** Employs the SoundEffectData ScriptableObject to store individual sound effect properties.
+
 **- Dynamic Pitch Generation:** Randomly generates pitch within specified ranges for varied sound effects.
+
 ### Example
 <img src="https://github.com/ibrasln/ibosh-engine/assets/75907428/19a753dd-4ec0-4a46-819f-4de8b074056a" alt="image" width="75%" height="auto"> 
