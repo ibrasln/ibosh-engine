@@ -3,6 +3,8 @@ using UnityEngine;
 using System.Collections;
 using IboshEngine.Runtime.Utilities;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
+
 namespace IboshEngine.Runtime.AudioManagement
 {
     public class MusicManager : IboshSingleton<MusicManager>
@@ -14,17 +16,17 @@ namespace IboshEngine.Runtime.AudioManagement
         [SerializeField] private float musicFadeInTime = .5f;
         [SerializeField] private float musicFadeOutTime = .5f;
 
-        private AudioSource audioSource;
-        private AudioClip currentMusic;
-        private Coroutine fadeOutMusicCoroutine;
-        private Coroutine fadeInMusicCoroutine;
-        public int _musicVolume = 10;
+        private AudioSource _audioSource;
+        private AudioClip _currentMusic;
+        private Coroutine _fadeOutMusicCoroutine;
+        private Coroutine _fadeInMusicCoroutine;
+        private int _musicVolume = 10;
 
         protected override void Awake()
         {
             base.Awake();
 
-            audioSource = GetComponent<AudioSource>();
+            _audioSource = GetComponent<AudioSource>();
 
             musicOffSnapshot.TransitionTo(0f);
         }
@@ -51,23 +53,23 @@ namespace IboshEngine.Runtime.AudioManagement
 
         private IEnumerator PlayRoutine(MusicData musicTrack, float fadeOutTime, float fadeInTime)
         {
-            if (fadeOutMusicCoroutine != null)
+            if (_fadeOutMusicCoroutine != null)
             {
-                StopCoroutine(fadeOutMusicCoroutine);
+                StopCoroutine(_fadeOutMusicCoroutine);
             }
 
-            if (fadeInMusicCoroutine != null)
+            if (_fadeInMusicCoroutine != null)
             {
-                StopCoroutine(fadeInMusicCoroutine);
+                StopCoroutine(_fadeInMusicCoroutine);
             }
 
-            if (musicTrack.Clip != currentMusic)
+            if (musicTrack.Clip != _currentMusic)
             {
-                currentMusic = musicTrack.Clip;
+                _currentMusic = musicTrack.Clip;
 
-                yield return fadeOutMusicCoroutine = StartCoroutine(FadeOut(fadeOutTime));
+                yield return _fadeOutMusicCoroutine = StartCoroutine(FadeOut(fadeOutTime));
 
-                yield return fadeInMusicCoroutine = StartCoroutine(FadeIn(musicTrack, fadeInTime));
+                yield return _fadeInMusicCoroutine = StartCoroutine(FadeIn(musicTrack, fadeInTime));
             }
 
             yield return null;
@@ -82,9 +84,9 @@ namespace IboshEngine.Runtime.AudioManagement
 
         private IEnumerator FadeIn(MusicData musicTrack, float fadeInTime)
         {
-            audioSource.clip = musicTrack.Clip;
-            audioSource.volume = musicTrack.Volume;
-            audioSource.Play();
+            _audioSource.clip = musicTrack.Clip;
+            _audioSource.volume = musicTrack.Volume;
+            _audioSource.Play();
 
             musicOnFullSnapshot.TransitionTo(fadeInTime);
 
@@ -111,18 +113,12 @@ namespace IboshEngine.Runtime.AudioManagement
             SetVolume(_musicVolume);
         }
 
-        public void SetVolume(float musicVolume)
+        private void SetVolume(float musicVolume)
         {
-            float muteDecibels = -80f;
+            const float muteDecibels = -80f;
 
-            if (musicVolume == 0)
-            {
-                musicMasterMixerGroup.audioMixer.SetFloat("MusicVolume", muteDecibels);
-            }
-            else
-            {
-                musicMasterMixerGroup.audioMixer.SetFloat("MusicVolume", ConversionUtilities.LinearToDecibels(musicVolume));
-            }
+            musicMasterMixerGroup.audioMixer.SetFloat("MusicVolume",
+                musicVolume == 0 ? muteDecibels : ConversionUtilities.LinearToDecibels(musicVolume));
         }
     }
 }

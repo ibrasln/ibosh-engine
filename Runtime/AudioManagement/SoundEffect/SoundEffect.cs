@@ -4,31 +4,31 @@ namespace IboshEngine.Runtime.AudioManagement
 {
     public class SoundEffect : MonoBehaviour
     {
-        private AudioSource audioSource;
+        private AudioSource _audioSource;
 
         private void Awake()
         {
-            audioSource = GetComponent<AudioSource>();
+            _audioSource = GetComponent<AudioSource>();
         }
 
         private void OnEnable()
         {
-            if (audioSource != null)
+            if (_audioSource != null)
             {
-                audioSource.Play();
+                _audioSource.Play();
             }
         }
 
         private void OnDisable()
         {
-            audioSource.Stop();
+            _audioSource.Stop();
         }
 
         public void SetSound(SoundEffectData soundEffect)
         {
-            audioSource.pitch = soundEffect.Pitch;
-            audioSource.volume = soundEffect.Volume;
-            audioSource.clip = soundEffect.Clip;
+            _audioSource.pitch = soundEffect.Pitch;
+            _audioSource.volume = soundEffect.Volume;
+            _audioSource.clip = soundEffect.Clip;
         }
     }
 }

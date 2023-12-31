@@ -11,7 +11,7 @@ namespace IboshEngine.Runtime.AudioManagement
         [Range(.1f, 1.5f)] public float MinPitch = 1;
         [Range(.1f, 1.5f)] public float MaxPitch = 1;
 
-        public float Pitch { get => Random.Range(MinPitch, MaxPitch); }
-        public float Length { get => Clip.length; }
+        public float Pitch => Random.Range(MinPitch, MaxPitch);
+        public float Length => Clip.length;
     }
 }
