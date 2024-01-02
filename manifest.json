@@ -1,0 +1,6 @@
+{
+  "dependencies":{
+    "com.dbrizov.naughtyattributes": "2.1.4",
+    "com.unity.inputsystem": "1.7.0"
+  }
+}
