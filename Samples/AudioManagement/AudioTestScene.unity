@@ -1521,6 +1521,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 720966731460934157, guid: bed3a5f6da02cfc4c8a8a77c4f2e6256, type: 3}
+      propertyPath: maxSoundVolume
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1502125743431463466, guid: bed3a5f6da02cfc4c8a8a77c4f2e6256, type: 3}
       propertyPath: m_Name
       value: SoundEffectManager
@@ -1621,6 +1625,10 @@ PrefabInstance:
     - target: {fileID: 5431620843203558903, guid: 77267535ceba2ca4887269bcb6e2666b, type: 3}
       propertyPath: m_Name
       value: MusicManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615152073711664362, guid: 77267535ceba2ca4887269bcb6e2666b, type: 3}
+      propertyPath: maxMusicVolume
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

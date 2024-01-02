@@ -7,6 +7,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace IboshEngine.Runtime.AudioManagement
 {
@@ -15,10 +16,13 @@ namespace IboshEngine.Runtime.AudioManagement
         public Action OnSoundPlayed;
         
         private ObjectPool<SoundEffect> _soundEffectPool;
+        
         [SerializeField] private GameObject soundEffectPrefab;
         [SerializeField] private AudioMixerGroup soundEffectsMasterMixerGroup;
+        
+        [SerializeField] private float maxSoundVolume;
         [ReadOnly] public int SoundEffectVolume = 10;
-
+        
         protected override void Awake()
         {
             base.Awake();
@@ -49,6 +53,12 @@ namespace IboshEngine.Runtime.AudioManagement
             StartCoroutine(DisableSoundEffect(sound, soundEffect.Length));
         }
 
+        public void PlayRandom(SoundEffectData[] soundEffects)
+        {
+            var randomIndex = Random.Range(0, soundEffects.Length);
+            Play(soundEffects[randomIndex]);
+        }
+        
         private IEnumerator DisableSoundEffect(SoundEffect sound, float soundDuration)
         {
             yield return new WaitForSeconds(soundDuration);
@@ -57,8 +67,6 @@ namespace IboshEngine.Runtime.AudioManagement
 
         public void IncreaseVolume()
         {
-            const int maxSoundVolume = 20;
-
             if (SoundEffectVolume >= maxSoundVolume) return;
 
             SoundEffectVolume++;

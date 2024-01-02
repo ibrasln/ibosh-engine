@@ -21,15 +21,18 @@ namespace IboshEngine.Runtime.AudioManagement
         [SerializeField] private AudioMixerSnapshot musicOffSnapshot;
         #endregion
         
+        [SerializeField] private float maxMusicVolume;
+        [ReadOnly] public int MusicVolume = 10;
+        
         private const float MusicFadeInTime = .75f;
         private const float MusicFadeOutTime = .75f;
 
         private AudioSource _audioSource;
         private AudioClip _currentMusic;
+        
         private Coroutine _fadeOutMusicCoroutine;
         private Coroutine _fadeInMusicCoroutine;
-        [ReadOnly] public int MusicVolume = 10;
-
+        
         protected override void Awake()
         {
             base.Awake();
@@ -106,8 +109,6 @@ namespace IboshEngine.Runtime.AudioManagement
 
         public void IncreaseVolume()
         {
-            int maxMusicVolume = 20;
-
             if (MusicVolume >= maxMusicVolume) return;
 
             MusicVolume++;
