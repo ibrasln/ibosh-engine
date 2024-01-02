@@ -4,6 +4,10 @@
   "displayName": "IboshEngine",
   "description": "This toolset provides you with a range of features to simplify and improve your debugging process, making your Unity projects more efficient and maintainable.",
   "unity": "2022.3",
+  "dependencies": {
+    "com.dbrizov.naughtyattributes": "2.1.4",
+    "com.unity.inputsystem": "1.7.0"
+  },
   "author": {
     "name": "Ibrahim Aslan",
     "email": "ibraslnn@gmail.com",
