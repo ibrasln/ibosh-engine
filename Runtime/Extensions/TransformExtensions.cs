@@ -81,6 +81,15 @@ namespace IboshEngine.Runtime.Extensions
         }
 
         /// <summary>
+        /// Extension method to reset the position of the object.
+        /// </summary>
+        /// <param name="transform">The Transform component of the object.</param>
+        public static void ResetPosition(this Transform transform)
+        {
+            transform.position = Vector3.zero;
+        }
+        
+        /// <summary>
         /// Extension method to set the scale of the object.
         /// </summary>
         /// <param name="transform">The Transform component of the object.</param>
@@ -124,6 +133,26 @@ namespace IboshEngine.Runtime.Extensions
             var localScale = transform.localScale;
             localScale = new(localScale.x, localScale.y, scale);
             transform.localScale = localScale;
+        }
+
+        /// <summary>
+        /// Extension method to reset the scale of the object to (1, 1, 1).
+        /// </summary>
+        /// <param name="transform">The Transform component of the object.</param>
+        public static void ResetScale(this Transform transform)
+        {
+            transform.localScale = Vector3.one;
+        }
+        
+        /// <summary>
+        /// Extension method to reset the position, rotation, and scale of the object.
+        /// </summary>
+        /// <param name="transform">The Transform component of the object.</param>
+        public static void ResetTransform(this Transform transform)
+        {
+            transform.position = Vector3.zero;
+            transform.rotation = Quaternion.identity;
+            transform.localScale = Vector3.one;
         }
     }
 }
