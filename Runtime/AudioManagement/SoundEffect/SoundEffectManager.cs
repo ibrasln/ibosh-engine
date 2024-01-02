@@ -3,8 +3,10 @@ using IboshEngine.Runtime.ObjectPool;
 using IboshEngine.Runtime.Singleton;
 using IboshEngine.Runtime.Utilities;
 using System.Collections;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
 namespace IboshEngine.Runtime.AudioManagement
 {
@@ -15,7 +17,7 @@ namespace IboshEngine.Runtime.AudioManagement
         private ObjectPool<SoundEffect> _soundEffectPool;
         [SerializeField] private GameObject soundEffectPrefab;
         [SerializeField] private AudioMixerGroup soundEffectsMasterMixerGroup;
-        private int _soundEffectVolume = 10;
+        [ReadOnly] public int SoundEffectVolume = 10;
 
         protected override void Awake()
         {
@@ -25,17 +27,17 @@ namespace IboshEngine.Runtime.AudioManagement
 
         private void Start()
         {
-            if (PlayerPrefs.HasKey("SoundEffectsVolume"))
+            if (PlayerPrefs.HasKey("SoundEffectVolume"))
             {
-                _soundEffectVolume = PlayerPrefs.GetInt("SoundEffectsVolume");
+                SoundEffectVolume = PlayerPrefs.GetInt("SoundEffectVolume");
             }
 
-            SetVolume(_soundEffectVolume);
+            SetVolume(SoundEffectVolume);
         }
 
         private void OnDisable()
         {
-            PlayerPrefs.SetInt("SoundEffectsVolume", _soundEffectVolume);
+            PlayerPrefs.SetInt("SoundEffectVolume", SoundEffectVolume);
         }
 
         public void Play(SoundEffectData soundEffect)
@@ -57,28 +59,28 @@ namespace IboshEngine.Runtime.AudioManagement
         {
             const int maxSoundVolume = 20;
 
-            if (_soundEffectVolume >= maxSoundVolume) return;
+            if (SoundEffectVolume >= maxSoundVolume) return;
 
-            _soundEffectVolume++;
+            SoundEffectVolume++;
 
-            SetVolume(_soundEffectVolume);
+            SetVolume(SoundEffectVolume);
         }
 
         public void DecreaseVolume()
         {
-            if (_soundEffectVolume == 0) return;
+            if (SoundEffectVolume == 0) return;
 
-            _soundEffectVolume--;
+            SoundEffectVolume--;
 
-            SetVolume(_soundEffectVolume);
+            SetVolume(SoundEffectVolume);
         }
 
-        private void SetVolume(int soundEffectsVolume)
+        private void SetVolume(int soundEffectVolume)
         {
             const float muteDecibels = -80f;
 
-            soundEffectsMasterMixerGroup.audioMixer.SetFloat("SoundEffectsVolume",
-                soundEffectsVolume == 0 ? muteDecibels : ConversionUtilities.LinearToDecibels(soundEffectsVolume));
+            soundEffectsMasterMixerGroup.audioMixer.SetFloat("SoundEffectVolume",
+                soundEffectVolume == 0 ? muteDecibels : ConversionUtilities.LinearToDecibels(soundEffectVolume));
         }
     }
 }

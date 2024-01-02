@@ -3,7 +3,9 @@ using IboshEngine.Runtime.Singleton;
 using UnityEngine;
 using System.Collections;
 using IboshEngine.Runtime.Utilities;
+using NaughtyAttributes;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
 namespace IboshEngine.Runtime.AudioManagement
 {
@@ -26,7 +28,7 @@ namespace IboshEngine.Runtime.AudioManagement
         private AudioClip _currentMusic;
         private Coroutine _fadeOutMusicCoroutine;
         private Coroutine _fadeInMusicCoroutine;
-        private int _musicVolume = 10;
+        [ReadOnly] public int MusicVolume = 10;
 
         protected override void Awake()
         {
@@ -41,15 +43,15 @@ namespace IboshEngine.Runtime.AudioManagement
         {
             if (PlayerPrefs.HasKey("MusicVolume"))
             {
-                _musicVolume = PlayerPrefs.GetInt("MusicVolume");
+                MusicVolume = PlayerPrefs.GetInt("MusicVolume");
             }
 
-            SetVolume(_musicVolume);
+            SetVolume(MusicVolume);
         }
 
         private void OnDisable()
         {
-            PlayerPrefs.SetInt("MusicVolume", _musicVolume);
+            PlayerPrefs.SetInt("MusicVolume", MusicVolume);
         }
 
         public void Play(MusicData musicTrack, float fadeOutTime = MusicFadeOutTime, float fadeInTime = MusicFadeInTime)
@@ -106,20 +108,20 @@ namespace IboshEngine.Runtime.AudioManagement
         {
             int maxMusicVolume = 20;
 
-            if (_musicVolume >= maxMusicVolume) return;
+            if (MusicVolume >= maxMusicVolume) return;
 
-            _musicVolume++;
+            MusicVolume++;
 
-            SetVolume(_musicVolume);    
+            SetVolume(MusicVolume);    
         }
 
         public void DecreaseVolume()
         {
-            if (_musicVolume == 0) return;
+            if (MusicVolume == 0) return;
 
-            _musicVolume--;
+            MusicVolume--;
 
-            SetVolume(_musicVolume);
+            SetVolume(MusicVolume);
         }
 
         private void SetVolume(float musicVolume)

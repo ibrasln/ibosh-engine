@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502125743431463466}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &720966731460934157
 MonoBehaviour:
@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectPrefab: {fileID: 884983109827406980, guid: f0faa1364c0c8eb449ee494d965f9f8b, type: 3}
   soundEffectsMasterMixerGroup: {fileID: -5076577157783297052, guid: b429ec78d354c6d4783985bb545eb446, type: 2}
+  SoundEffectVolume: 10
