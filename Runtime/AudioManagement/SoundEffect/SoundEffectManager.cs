@@ -1,4 +1,5 @@
-﻿using IboshEngine.Runtime.ObjectPool;
+﻿using System;
+using IboshEngine.Runtime.ObjectPool;
 using IboshEngine.Runtime.Singleton;
 using IboshEngine.Runtime.Utilities;
 using System.Collections;
@@ -9,6 +10,8 @@ namespace IboshEngine.Runtime.AudioManagement
 {
     public class SoundEffectManager : IboshSingleton<SoundEffectManager>
     {
+        public Action OnSoundPlayed;
+        
         private ObjectPool<SoundEffect> _soundEffectPool;
         [SerializeField] private GameObject soundEffectPrefab;
         [SerializeField] private AudioMixerGroup soundEffectsMasterMixerGroup;
@@ -40,6 +43,7 @@ namespace IboshEngine.Runtime.AudioManagement
             SoundEffect sound = _soundEffectPool.Pull();
             sound.gameObject.SetActive(true);
             sound.SetSound(soundEffect);
+            OnSoundPlayed?.Invoke();
             StartCoroutine(DisableSoundEffect(sound, soundEffect.Length));
         }
 

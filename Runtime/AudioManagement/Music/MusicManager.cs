@@ -1,20 +1,26 @@
+using System;
 using IboshEngine.Runtime.Singleton;
 using UnityEngine;
 using System.Collections;
 using IboshEngine.Runtime.Utilities;
 using UnityEngine.Audio;
-using UnityEngine.Serialization;
 
 namespace IboshEngine.Runtime.AudioManagement
 {
     public class MusicManager : IboshSingleton<MusicManager>
     {
+        public Action OnMusicStarted;
+        public Action OnMusicStopped;
+        
+        #region Audio Mixer
         [SerializeField] private AudioMixerGroup musicMasterMixerGroup;
         [SerializeField] private AudioMixerSnapshot musicOnFullSnapshot;
         [SerializeField] private AudioMixerSnapshot musicLowSnapshot;
         [SerializeField] private AudioMixerSnapshot musicOffSnapshot;
-        [SerializeField] private float musicFadeInTime = .5f;
-        [SerializeField] private float musicFadeOutTime = .5f;
+        #endregion
+        
+        private const float MusicFadeInTime = .75f;
+        private const float MusicFadeOutTime = .75f;
 
         private AudioSource _audioSource;
         private AudioClip _currentMusic;
@@ -46,7 +52,7 @@ namespace IboshEngine.Runtime.AudioManagement
             PlayerPrefs.SetInt("MusicVolume", _musicVolume);
         }
 
-        public void Play(MusicData musicTrack, float fadeOutTime = .5f, float fadeInTime = .5f)
+        public void Play(MusicData musicTrack, float fadeOutTime = MusicFadeOutTime, float fadeInTime = MusicFadeInTime)
         {
             StartCoroutine(PlayRoutine(musicTrack, fadeOutTime, fadeInTime));
         }
@@ -80,6 +86,7 @@ namespace IboshEngine.Runtime.AudioManagement
             musicLowSnapshot.TransitionTo(fadeOutTime);
 
             yield return new WaitForSeconds(fadeOutTime);
+            OnMusicStopped?.Invoke();
         }
 
         private IEnumerator FadeIn(MusicData musicTrack, float fadeInTime)
@@ -90,6 +97,8 @@ namespace IboshEngine.Runtime.AudioManagement
 
             musicOnFullSnapshot.TransitionTo(fadeInTime);
 
+            OnMusicStarted?.Invoke();
+            
             yield return new WaitForSeconds(fadeInTime);
         }
 
