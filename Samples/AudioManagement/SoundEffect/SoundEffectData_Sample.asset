@@ -15,5 +15,6 @@ MonoBehaviour:
   Name: Sample
   Clip: {fileID: 8300000, guid: 941094bab58c5974c9dcb822cbf5d2db, type: 3}
   Volume: 1
+  IsPitchRandom: 0
   MinPitch: 0.8
   MaxPitch: 1.2

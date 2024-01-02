@@ -2,7 +2,7 @@
   "name": "com.iboshsama.iboshengine",
   "version": "1.0.0",
   "displayName": "Ibosh Engine",
-  "description": "This toolset provides you with a range of features to simplify and improve your debugging process, making your Unity projects more efficient and maintainable.",
+  "description": "This toolset provides you with a range of features to simplify and improve your debugging process, making your Unity projects more efficient and maintainable. Requires NaughtyAttributes.",
   "unity": "2022.3",
   "dependencies": {
   	"com.unity.inputsystem": "1.7.0"

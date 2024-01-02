@@ -15,7 +15,7 @@ namespace IboshEngine.Runtime.AudioManagement
         private ObjectPool<SoundEffect> _soundEffectPool;
         [SerializeField] private GameObject soundEffectPrefab;
         [SerializeField] private AudioMixerGroup soundEffectsMasterMixerGroup;
-        private int _soundEffectVolume;
+        private int _soundEffectVolume = 10;
 
         protected override void Awake()
         {

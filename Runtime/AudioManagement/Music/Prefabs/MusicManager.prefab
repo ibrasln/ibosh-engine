@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5431620843203558903}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &3591315742438888800
 AudioSource:
@@ -42,7 +42,7 @@ AudioSource:
   m_GameObject: {fileID: 5431620843203558903}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -5177852239432425543, guid: b429ec78d354c6d4783985bb545eb446, type: 2}
+  OutputAudioMixerGroup: {fileID: -4332073842649822768, guid: b429ec78d354c6d4783985bb545eb446, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -145,6 +145,3 @@ MonoBehaviour:
   musicOnFullSnapshot: {fileID: 8267853622602512185, guid: b429ec78d354c6d4783985bb545eb446, type: 2}
   musicLowSnapshot: {fileID: 6059156180708438163, guid: b429ec78d354c6d4783985bb545eb446, type: 2}
   musicOffSnapshot: {fileID: -226557473903078605, guid: b429ec78d354c6d4783985bb545eb446, type: 2}
-  musicFadeInTime: 0.5
-  musicFadeOutTime: 0.5
-  musicVolume: 10

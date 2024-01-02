@@ -1,6 +1,6 @@
 {
     "name": "IboshSama.IboshEngine.Samples",
-    "rootNamespace": "IboshSama.IboshEngine.Samples",
+    "rootNamespace": "IboshEngine.Samples",
     "references": [
         "GUID:4bd600fa7d8b8c84e9e2ba3ac59a614a"
     ],
