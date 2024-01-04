@@ -6,8 +6,7 @@
   "unity": "2022.3",
   "dependencies": {
   	"com.unity.inputsystem": "1.7.0",
-  	"com.unity.cinemachine": "2.9.7",
-    "com.dbrizov.naughtyattributes" : "https://github.com/dbrizov/NaughtyAttributes.git#upm"
+  	"com.unity.cinemachine": "2.9.7"
   },
   "author": {
     "name": "Ibrahim Aslan",
