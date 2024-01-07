@@ -1,3 +1,4 @@
+using IboshEngine.Runtime.Utilities;
 using UnityEngine;
 
 namespace IboshEngine.Runtime.Extensions
@@ -143,7 +144,28 @@ namespace IboshEngine.Runtime.Extensions
         {
             transform.localScale = Vector3.one;
         }
+
+        public static void RotateX(this Transform transform, Vector3 firstPos, Vector3 secondPos)
+        {
+            Vector3 dir = (firstPos - secondPos).normalized;
+            float angle = ConversionUtilities.VectorToAngle(dir);
+            transform.rotation = Quaternion.Euler(angle, 0f, 0f);
+        }
+
+        public static void RotateY(this Transform transform, Vector3 firstPos, Vector3 secondPos)
+        {
+            Vector3 dir = (firstPos - secondPos).normalized;
+            float angle = ConversionUtilities.VectorToAngle(dir);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        }
         
+        public static void RotateZ(this Transform transform, Vector3 firstPos, Vector3 secondPos)
+        {
+            Vector3 dir = (firstPos - secondPos).normalized;
+            float angle = ConversionUtilities.VectorToAngle(dir);
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        }
+            
         /// <summary>
         /// Extension method to reset the position, rotation, and scale of the object.
         /// </summary>
@@ -154,5 +176,6 @@ namespace IboshEngine.Runtime.Extensions
             transform.rotation = Quaternion.identity;
             transform.localScale = Vector3.one;
         }
+        
     }
 }
