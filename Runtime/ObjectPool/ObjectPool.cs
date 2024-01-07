@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace IboshEngine.Runtime.ObjectPool
 {
+    /// <summary>
+    /// Generic object pool for Unity GameObjects.
+    /// </summary>
+    /// <typeparam name="T">Type of the pooled items.</typeparam>
     public class ObjectPool<T>
     {
         private readonly GameObject _poolItemPref;

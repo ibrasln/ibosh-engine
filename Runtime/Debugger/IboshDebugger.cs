@@ -2,6 +2,12 @@ using UnityEngine;
 
 namespace IboshEngine.Runtime.Debugger
 {
+    /// <summary>
+    /// Utility class providing methods for enhanced debugging in Unity.
+    /// </summary>
+    /// <remarks>
+    /// The class includes methods for logging messages, errors, and warnings with customizable colors. It also supports conditional logging based on the debug build setting.
+    /// </remarks>
     public static class IboshDebugger
     {
         public enum DebugColor

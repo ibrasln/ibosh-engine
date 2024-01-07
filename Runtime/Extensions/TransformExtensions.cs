@@ -1,8 +1,14 @@
-using IboshEngine.Runtime.Utilities;
 using UnityEngine;
 
 namespace IboshEngine.Runtime.Extensions
 {
+    /// <summary>
+    /// A collection of extension methods for the Transform component in Unity, providing convenient functions for manipulating the position, rotation, and scale of GameObjects.
+    /// </summary>
+    /// <remarks>
+    /// These extensions include methods to translate along specific axes, set positions and scales, reset positions, scales, and transforms, and apply rotations around
+    /// the X, Y, and Z axes.
+    /// </remarks>
     public static class TransformExtensions
     {
         /// <summary>
@@ -144,25 +150,34 @@ namespace IboshEngine.Runtime.Extensions
         {
             transform.localScale = Vector3.one;
         }
-
-        public static void RotateX(this Transform transform, Vector3 firstPos, Vector3 secondPos)
+        
+        /// <summary>
+        /// Extension method to rotate the object on the X-axis.
+        /// </summary>
+        /// <param name="transform">The Transform component of the object.</param>
+        /// <param name="angle">The angle of rotation in degrees.</param>>
+        public static void RotateX(this Transform transform, float angle)
         {
-            Vector3 dir = (firstPos - secondPos).normalized;
-            float angle = ConversionUtilities.VectorToAngle(dir);
             transform.rotation = Quaternion.Euler(angle, 0f, 0f);
         }
 
-        public static void RotateY(this Transform transform, Vector3 firstPos, Vector3 secondPos)
+        /// <summary>
+        /// Extension method to rotate the object on the Y-axis.
+        /// </summary>
+        /// <param name="transform">The Transform component of the object.</param>
+        /// <param name="angle">The angle of rotation in degrees.</param>>
+        public static void RotateY(this Transform transform, float angle)
         {
-            Vector3 dir = (firstPos - secondPos).normalized;
-            float angle = ConversionUtilities.VectorToAngle(dir);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
         }
         
-        public static void RotateZ(this Transform transform, Vector3 firstPos, Vector3 secondPos)
+        /// <summary>
+        /// Extension method to rotate the object on the Z-axis.
+        /// </summary>
+        /// <param name="transform">The Transform component of the object.</param>
+        /// <param name="angle">The angle of rotation in degrees.</param>>
+        public static void RotateZ(this Transform transform, float angle)
         {
-            Vector3 dir = (firstPos - secondPos).normalized;
-            float angle = ConversionUtilities.VectorToAngle(dir);
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
             
