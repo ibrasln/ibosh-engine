@@ -12,6 +12,11 @@ namespace IboshEngine.Runtime.Extensions
     /// </remarks>
     public static class AudioExtensions
     {
+        /// <summary>
+        /// Extension method to play a random AudioClip from the provided array.
+        /// </summary>
+        /// <param name="audioSource">The AudioSource to play the audio clip.</param>
+        /// <param name="audioClips">An array of AudioClip options to choose from.</param>
         public static void PlayRandomAudio(this AudioSource audioSource, AudioClip[] audioClips)
         {
             if (audioClips.Length > 0)

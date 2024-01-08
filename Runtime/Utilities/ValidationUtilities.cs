@@ -5,11 +5,18 @@ namespace IboshEngine.Runtime.Utilities
 {
     using Debugger;
 
+    /// <summary>
+    /// Utility class for performing various validation checks with debug logging.
+    /// </summary>
     public static class ValidationUtilities
     {
         /// <summary>
-        /// Empty string debug check
+        /// Checks if a string is empty and logs a warning if true.
         /// </summary>
+        /// <param name="thisObject">The object being validated.</param>
+        /// <param name="fieldName">The name of the field being checked.</param>
+        /// <param name="stringToCheck">The string to check for emptiness.</param>
+        /// <returns>True if the string is empty, otherwise false.</returns>
         public static bool ValidateCheckEmptyString(Object thisObject, string fieldName, string stringToCheck)
         {
             if (stringToCheck == "")
@@ -21,8 +28,12 @@ namespace IboshEngine.Runtime.Utilities
         }
 
         /// <summary>
-        /// Null value debug check
+        /// Checks if an object reference is null and logs a warning if true.
         /// </summary>
+        /// <param name="thisObject">The object being validated.</param>
+        /// <param name="fieldName">The name of the field being checked.</param>
+        /// <param name="objectToCheck">The object reference to check for null.</param>
+        /// <returns>True if the object reference is null, otherwise false.</returns>
         public static bool ValidateCheckNullValue(Object thisObject, string fieldName, Object objectToCheck)
         {
             if (objectToCheck == null)
@@ -34,8 +45,12 @@ namespace IboshEngine.Runtime.Utilities
         }
 
         /// <summary>
-        /// List is empty or contains null value check - returns true if there is an error
+        /// Checks if an enumerable collection is empty or contains null values and logs a warning if true.
         /// </summary>
+        /// <param name="thisObject">The object being validated.</param>
+        /// <param name="fieldName">The name of the field being checked.</param>
+        /// <param name="enumerableObjectToCheck">The enumerable collection to check.</param>
+        /// <returns>True if the enumerable collection is empty or contains null values, otherwise false.</returns>
         public static bool ValidateCheckEnumerableValues(Object thisObject, string fieldName, IEnumerable enumerableObjectToCheck)
         {
             bool error = false;
@@ -72,8 +87,13 @@ namespace IboshEngine.Runtime.Utilities
         }
 
         /// <summary>
-        /// Positive value debug check. If zero is allowed set isZeroAllowed true. (for integers)
+        /// Checks if an integer value is positive and logs a warning if false.
         /// </summary>
+        /// <param name="thisObject">The object being validated.</param>
+        /// <param name="fieldName">The name of the field being checked.</param>
+        /// <param name="valueToCheck">The integer value to check for positivity.</param>
+        /// <param name="isZeroAllowed">True if zero is an allowed value, otherwise false.</param>
+        /// <returns>True if the integer value is not positive, otherwise false.</returns>
         public static bool ValidateCheckPositiveValue(Object thisObject, string fieldName, int valueToCheck, bool isZeroAllowed)
         {
             bool error = false;
@@ -99,8 +119,13 @@ namespace IboshEngine.Runtime.Utilities
 
 
         /// <summary>
-        /// Positive value debug check. If zero is allowed set isZeroAllowed true. (for floats)
+        /// Checks if a float value is positive and logs a warning if false.
         /// </summary>
+        /// <param name="thisObject">The object being validated.</param>
+        /// <param name="fieldName">The name of the field being checked.</param>
+        /// <param name="valueToCheck">The float value to check for positivity.</param>
+        /// <param name="isZeroAllowed">True if zero is an allowed value, otherwise false.</param>
+        /// <returns>True if the float value is not positive, otherwise false.</returns>
         public static bool ValidateCheckPositiveValue(Object thisObject, string fieldName, float valueToCheck, bool isZeroAllowed)
         {
             bool error = false;
@@ -125,8 +150,15 @@ namespace IboshEngine.Runtime.Utilities
         }
 
         /// <summary>
-        /// Positive range debug check - set isZeroAllowed true if the min and max range values can both be zero. Return true if there is an error
+        /// Checks if a range of values is positive and logs a warning if false.
         /// </summary>
+        /// <param name="thisObject">The object being validated.</param>
+        /// <param name="fieldNameMinimum">The name of the minimum field being checked.</param>
+        /// <param name="valueToCheckMinimum">The minimum value to check for positivity.</param>
+        /// <param name="fieldNameMaximum">The name of the maximum field being checked.</param>
+        /// <param name="valueToCheckMaximum">The maximum value to check for positivity.</param>
+        /// <param name="isZeroAllowed">True if zero is an allowed value, otherwise false.</param>
+        /// <returns>True if the range is not positive, otherwise false.</returns>
         public static bool ValidateCheckPositiveRange(Object thisObject, string fieldNameMinimum, float valueToCheckMinimum, string fieldNameMaximum, float valueToCheckMaximum, bool isZeroAllowed)
         {
             bool error = false;
@@ -144,8 +176,15 @@ namespace IboshEngine.Runtime.Utilities
         }
 
         /// <summary>
-        /// Positive range debug check - set isZeroAllowed true if the min and max range values can both be zero. Return true if there is an error
+        /// Checks if a range of values is positive and logs a warning if false.
         /// </summary>
+        /// <param name="thisObject">The object being validated.</param>
+        /// <param name="fieldNameMinimum">The name of the minimum field being checked.</param>
+        /// <param name="valueToCheckMinimum">The minimum value to check for positivity.</param>
+        /// <param name="fieldNameMaximum">The name of the maximum field being checked.</param>
+        /// <param name="valueToCheckMaximum">The maximum value to check for positivity.</param>
+        /// <param name="isZeroAllowed">True if zero is an allowed value, otherwise false.</param>
+        /// <returns>True if the range is not positive, otherwise false.</returns>
         public static bool ValidateCheckPositiveRange(Object thisObject, string fieldNameMinimum, int valueToCheckMinimum, string fieldNameMaximum, int valueToCheckMaximum, bool isZeroAllowed)
         {
             bool error = false;

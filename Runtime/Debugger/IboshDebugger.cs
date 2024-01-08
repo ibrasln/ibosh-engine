@@ -10,6 +10,9 @@ namespace IboshEngine.Runtime.Debugger
     /// </remarks>
     public static class IboshDebugger
     {
+        /// <summary>
+        /// Enum representing various debug color options for message formatting.
+        /// </summary>
         public enum DebugColor
         {
             Black,
@@ -24,6 +27,10 @@ namespace IboshEngine.Runtime.Debugger
             Yellow
         }
 
+        /// <summary>
+        /// Logs a regular message to the Unity console.
+        /// </summary>
+        /// <param name="message">The message to log.</param>
         public static void LogMessage(string message)
         {
             if (!Debug.isDebugBuild) return;
@@ -31,6 +38,11 @@ namespace IboshEngine.Runtime.Debugger
             Debug.Log(message);
         }
 
+        /// <summary>
+        /// Logs a formatted message to the Unity console with the specified color.
+        /// </summary>
+        /// <param name="message">The message to log.</param>
+        /// <param name="messageColor">The color of the message text.</param>
         public static void LogMessage(string message, DebugColor messageColor)
         {
             if (!Debug.isDebugBuild) return;
@@ -38,32 +50,69 @@ namespace IboshEngine.Runtime.Debugger
             Debug.Log($"<color={DebugColorValue(messageColor)}> {message}</color>");
         }
 
+        /// <summary>
+        /// Logs a formatted message with a header to the Unity console, each with specified colors.
+        /// </summary>
+        /// <param name="message">The message to log.</param>
+        /// <param name="header">The header for the log message.</param>
+        /// <param name="messageColor">The color of the message text.</param>
+        /// <param name="headerColor">The color of the header text.</param>
         public static void LogMessage(string message, string header, DebugColor messageColor, DebugColor headerColor)
         {
             if (!Debug.isDebugBuild) return;
 
-            Debug.Log($"<color={DebugColorValue(headerColor)}> [{header}] </color> <color={DebugColorValue(messageColor)}> {message}</color>");
+            Debug.Log(
+                $"<color={DebugColorValue(headerColor)}> [{header}] </color> <color={DebugColorValue(messageColor)}> {message}</color>");
         }
 
+        /// <summary>
+        /// Logs a formatted array of messages with a header to the Unity console, each with specified colors.
+        /// </summary>
+        /// <param name="messages">The array of messages to log.</param>
+        /// <param name="header">The header for the log messages.</param>
+        /// <param name="messageColor">The color of the message text.</param>
+        /// <param name="headerColor">The color of the header text.</param>
         public static void LogMessage(string[] messages, string header, DebugColor messageColor, DebugColor headerColor)
         {
             if (!Debug.isDebugBuild) return;
 
-            Debug.Log($"<color={DebugColorValue(headerColor)}> [{header}] </color> <color={DebugColorValue(messageColor)}> {string.Join(",", messages)}</color>");
+            Debug.Log(
+                $"<color={DebugColorValue(headerColor)}> [{header}] </color> <color={DebugColorValue(messageColor)}> {string.Join(",", messages)}</color>");
         }
 
+        /// <summary>
+        /// Logs an error message with a header to the Unity console, each with specified colors.
+        /// </summary>
+        /// <param name="error">The error message to log.</param>
+        /// <param name="header">The header for the log error.</param>
+        /// <param name="messageColor">The color of the error message text.</param>
+        /// <param name="headerColor">The color of the header text.</param>
         public static void LogError(string error, string header, DebugColor messageColor, DebugColor headerColor)
         {
-            Debug.LogError($"<color={DebugColorValue(headerColor)}> [{header}] </color> <color={DebugColorValue(messageColor)}> {error}</color>");
+            Debug.LogError(
+                $"<color={DebugColorValue(headerColor)}> [{header}] </color> <color={DebugColorValue(messageColor)}> {error}</color>");
         }
 
+        /// <summary>
+        /// Logs a warning message with a header to the Unity console, each with specified colors.
+        /// </summary>
+        /// <param name="error">The warning message to log.</param>
+        /// <param name="header">The header for the log warning.</param>
+        /// <param name="messageColor">The color of the warning message text.</param>
+        /// <param name="headerColor">The color of the header text.</param>
         public static void LogWarning(string error, string header, DebugColor messageColor, DebugColor headerColor)
         {
             if (!Debug.isDebugBuild) return;
 
-            Debug.LogWarning($"<color={DebugColorValue(headerColor)}> [{header}] </color> <color={DebugColorValue(messageColor)}> {error}</color>");
+            Debug.LogWarning(
+                $"<color={DebugColorValue(headerColor)}> [{header}] </color> <color={DebugColorValue(messageColor)}> {error}</color>");
         }
 
+        /// <summary>
+        /// Converts the DebugColor enum value to its corresponding string representation.
+        /// </summary>
+        /// <param name="colorEnum">The DebugColor enum value.</param>
+        /// <returns>The string representation of the specified color.</returns>
         private static string DebugColorValue(DebugColor colorEnum)
         {
             return colorEnum switch
@@ -78,10 +127,8 @@ namespace IboshEngine.Runtime.Debugger
                 DebugColor.Red => "red",
                 DebugColor.White => "white",
                 DebugColor.Yellow => "yellow",
-
                 _ => default
             };
         }
     }
-
 }

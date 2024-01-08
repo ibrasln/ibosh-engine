@@ -15,6 +15,10 @@ namespace IboshEngine.Runtime.Utilities
     {
         private static Camera mainCam;
         
+        /// <summary>
+        /// Retrieves the world position of the mouse cursor.
+        /// </summary>
+        /// <returns>The world position of the mouse cursor as a Vector3.</returns>
         public static Vector3 GetMouseWorldPosition()
         {
             if (mainCam == null) mainCam = Camera.main;
