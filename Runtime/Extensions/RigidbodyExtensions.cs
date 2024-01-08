@@ -41,6 +41,15 @@ namespace IboshEngine.Runtime.Extensions
         {
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, yVelocity);
         }
+
+        /// <summary>
+        /// Sets the velocity of the Rigidbody2D to zero.
+        /// </summary>
+        /// <param name="rigidbody">The Rigidbody component.</param>
+        public static void SetVelocityZero(this Rigidbody2D rigidbody)
+        {
+            rigidbody.velocity = Vector2.zero;
+        }
         #endregion
 
         #region Rigidbody
@@ -88,6 +97,15 @@ namespace IboshEngine.Runtime.Extensions
             var velocity = rigidbody.velocity;
             velocity = new Vector3(velocity.x, velocity.y, zVelocity);
             rigidbody.velocity = velocity;
+        }
+        
+        /// <summary>
+        /// Sets the velocity of the Rigidbody to zero.
+        /// </summary>
+        /// <param name="rigidbody">The Rigidbody component.</param>
+        public static void SetVelocityZero(this Rigidbody rigidbody)
+        {
+            rigidbody.velocity = Vector3.zero;
         }
         #endregion
     }
