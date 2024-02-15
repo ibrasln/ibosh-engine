@@ -34,5 +34,15 @@ namespace IboshEngine.Runtime.Utilities
 
             return degrees;
         }
+
+        /// <summary>
+        /// Get direction vector from an angle in degrees
+        /// </summary>
+        /// /// <param name="angle">The angle.</param>
+        /// <returns>The vector from the provided angle in degrees.</returns>
+        public static Vector3 AngleToVector(float angle)
+        {
+            return new(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0f);
+        }
     }
 }
