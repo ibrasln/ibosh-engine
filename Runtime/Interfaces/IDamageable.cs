@@ -8,7 +8,7 @@ namespace IboshEngine.Runtime.Interfaces
         /// <summary>
         /// Takes damage.
         /// </summary>
-        void TakeDamage();
+        void TakeDamage(int amount);
     }
 
 }
