@@ -17,7 +17,7 @@ namespace IboshEngine.Runtime.Utilities
         /// <param name="fieldName">The name of the field being checked.</param>
         /// <param name="stringToCheck">The string to check for emptiness.</param>
         /// <returns>True if the string is empty, otherwise false.</returns>
-        public static bool ValidateCheckEmptyString(Object thisObject, string fieldName, string stringToCheck)
+        public static bool CheckEmptyString(Object thisObject, string fieldName, string stringToCheck)
         {
             if (stringToCheck == "")
             {
@@ -34,7 +34,7 @@ namespace IboshEngine.Runtime.Utilities
         /// <param name="fieldName">The name of the field being checked.</param>
         /// <param name="objectToCheck">The object reference to check for null.</param>
         /// <returns>True if the object reference is null, otherwise false.</returns>
-        public static bool ValidateCheckNullValue(Object thisObject, string fieldName, Object objectToCheck)
+        public static bool CheckNullValue(Object thisObject, string fieldName, Object objectToCheck)
         {
             if (objectToCheck == null)
             {
@@ -51,14 +51,14 @@ namespace IboshEngine.Runtime.Utilities
         /// <param name="fieldName">The name of the field being checked.</param>
         /// <param name="enumerableObjectToCheck">The enumerable collection to check.</param>
         /// <returns>True if the enumerable collection is empty or contains null values, otherwise false.</returns>
-        public static bool ValidateCheckEnumerableValues(Object thisObject, string fieldName, IEnumerable enumerableObjectToCheck)
+        public static bool CheckEnumerableValues(Object thisObject, string fieldName, IEnumerable enumerableObjectToCheck)
         {
             bool error = false;
             int count = 0;
 
             if (enumerableObjectToCheck == null)
             {
-                IboshDebugger.LogWarning($"{fieldName} is null in object {thisObject.name}", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
+                IboshDebugger.LogWarning($"{fieldName} is null.", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
                 return true;
             }
 
@@ -68,7 +68,7 @@ namespace IboshEngine.Runtime.Utilities
 
                 if (item == null)
                 {
-                    IboshDebugger.LogWarning($"{fieldName} has null values in object {thisObject.name}", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
+                    IboshDebugger.LogWarning($"{fieldName} has null values.", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
                     error = true;
                 }
                 else
@@ -79,7 +79,7 @@ namespace IboshEngine.Runtime.Utilities
 
             if (count == 0)
             {
-                IboshDebugger.LogWarning($"{fieldName} has no values in object {thisObject.name}", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
+                IboshDebugger.LogWarning($"{fieldName} has no values.", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
                 error = true;
             }
 
@@ -87,14 +87,14 @@ namespace IboshEngine.Runtime.Utilities
         }
 
         /// <summary>
-        /// Checks if an integer value is positive and logs a warning if false.
+        /// Checks if an number value is positive and logs a warning if false.
         /// </summary>
         /// <param name="thisObject">The object being validated.</param>
         /// <param name="fieldName">The name of the field being checked.</param>
-        /// <param name="valueToCheck">The integer value to check for positivity.</param>
+        /// <param name="valueToCheck">The number value to check for positivity.</param>
         /// <param name="isZeroAllowed">True if zero is an allowed value, otherwise false.</param>
-        /// <returns>True if the integer value is not positive, otherwise false.</returns>
-        public static bool ValidateCheckPositiveValue(Object thisObject, string fieldName, int valueToCheck, bool isZeroAllowed)
+        /// <returns>True if the number value is not positive, otherwise false.</returns>
+        public static bool CheckPositiveValue(Object thisObject, string fieldName, int valueToCheck, bool isZeroAllowed)
         {
             bool error = false;
 
@@ -102,7 +102,7 @@ namespace IboshEngine.Runtime.Utilities
             {
                 if (valueToCheck < 0)
                 {
-                    IboshDebugger.LogWarning($"{fieldName} must contain a positive value or zero in object {thisObject.name}", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
+                    IboshDebugger.LogWarning($"{fieldName} must contain a positive value or zero.", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
                     error = true;
                 }
             }
@@ -110,7 +110,7 @@ namespace IboshEngine.Runtime.Utilities
             {
                 if (valueToCheck <= 0)
                 {
-                    IboshDebugger.LogWarning($"{fieldName} must contain a positive value in object {thisObject.name}", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
+                    IboshDebugger.LogWarning($"{fieldName} must contain a positive value.", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
                     error = true;
                 }
             }
@@ -126,7 +126,7 @@ namespace IboshEngine.Runtime.Utilities
         /// <param name="valueToCheck">The float value to check for positivity.</param>
         /// <param name="isZeroAllowed">True if zero is an allowed value, otherwise false.</param>
         /// <returns>True if the float value is not positive, otherwise false.</returns>
-        public static bool ValidateCheckPositiveValue(Object thisObject, string fieldName, float valueToCheck, bool isZeroAllowed)
+        public static bool CheckPositiveValue(Object thisObject, string fieldName, float valueToCheck, bool isZeroAllowed)
         {
             bool error = false;
 
@@ -134,7 +134,7 @@ namespace IboshEngine.Runtime.Utilities
             {
                 if (valueToCheck < 0)
                 {
-                    IboshDebugger.LogWarning($"{fieldName} must contain a positive value or zero in object {thisObject.name}", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
+                    IboshDebugger.LogWarning($"{fieldName} must contain a positive value or zero.", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
                     error = true;
                 }
             }
@@ -142,7 +142,7 @@ namespace IboshEngine.Runtime.Utilities
             {
                 if (valueToCheck <= 0)
                 {
-                    IboshDebugger.LogWarning($"{fieldName} must contain a positive value in object {thisObject.name}", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
+                    IboshDebugger.LogWarning($"{fieldName} must contain a positive value.", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
                     error = true;
                 }
             }
@@ -159,13 +159,13 @@ namespace IboshEngine.Runtime.Utilities
         /// <param name="valueToCheckMaximum">The maximum value to check for positivity.</param>
         /// <param name="isZeroAllowed">True if zero is an allowed value, otherwise false.</param>
         /// <returns>True if the range is not positive, otherwise false.</returns>
-        public static bool ValidateCheckPositiveRange(Object thisObject, string fieldNameMinimum, float valueToCheckMinimum, string fieldNameMaximum, float valueToCheckMaximum, bool isZeroAllowed)
+        public static bool CheckPositiveRange(Object thisObject, string fieldNameMinimum, float valueToCheckMinimum, string fieldNameMaximum, float valueToCheckMaximum, bool isZeroAllowed)
         {
             bool error = false;
 
             if (valueToCheckMinimum > valueToCheckMaximum)
             {
-                IboshDebugger.LogWarning($"{fieldNameMinimum} must be less than or equal to {fieldNameMaximum} in object {thisObject.name}", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
+                IboshDebugger.LogWarning($"{fieldNameMinimum} must be less than or equal to {fieldNameMaximum}.", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
                 error = true;
             }
 
@@ -185,19 +185,57 @@ namespace IboshEngine.Runtime.Utilities
         /// <param name="valueToCheckMaximum">The maximum value to check for positivity.</param>
         /// <param name="isZeroAllowed">True if zero is an allowed value, otherwise false.</param>
         /// <returns>True if the range is not positive, otherwise false.</returns>
-        public static bool ValidateCheckPositiveRange(Object thisObject, string fieldNameMinimum, int valueToCheckMinimum, string fieldNameMaximum, int valueToCheckMaximum, bool isZeroAllowed)
+        public static bool CheckPositiveRange(Object thisObject, string fieldNameMinimum, int valueToCheckMinimum, string fieldNameMaximum, int valueToCheckMaximum, bool isZeroAllowed)
         {
             bool error = false;
 
             if (valueToCheckMinimum > valueToCheckMaximum)
             {
-                IboshDebugger.LogWarning($"{fieldNameMinimum} must be less than or equal to {fieldNameMaximum} in object {thisObject.name}", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
+                IboshDebugger.LogWarning($"{fieldNameMinimum} must be less than or equal to {fieldNameMaximum}.", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
                 error = true;
             }
 
             if (ValidateCheckPositiveValue(thisObject, fieldNameMinimum, valueToCheckMinimum, isZeroAllowed)) error = true;
             if (ValidateCheckPositiveValue(thisObject, fieldNameMaximum, valueToCheckMaximum, isZeroAllowed)) error = true;
 
+            return error;
+        }
+
+        /// <summary>
+        /// Checks if two numbers are equal and logs a warning if false.
+        /// </summary>
+        /// <param name="firstNumberToCheck">The first number to check for equality.</param>
+        /// <param name="secondNumberToCheck">The second number to check for equality.</param>
+        /// <param name="fieldNameFirstNumber">The name of the first number being checked.</param>
+        /// <param name="fieldNameSecondNumber">The name of the first number being checked.</param>
+        /// <returns>True if the numbers are equal, otherwise false.</returns>
+        public static bool CheckEqualityOfTwoNumbers(Object thisObject, int firstNumberToCheck, int secondNumberToCheck, string fieldNameFirstNumber, string fieldNameSecondNumber)
+        {
+            bool error = false;
+            if (firstNumberToCheck != secondNumberToCheck)
+            {
+                IboshDebugger.LogWarning($"{fieldNameFirstNumber} must be equal to {fieldNameSecondNumber}.", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
+                error = true;
+            }
+            return error;
+        }
+
+        /// <summary>
+        /// Checks if two numbers are equal and logs a warning if false.
+        /// </summary>
+        /// <param name="firstNumberToCheck">The first number to check for equality.</param>
+        /// <param name="secondNumberToCheck">The second number to check for equality.</param>
+        /// <param name="fieldNameFirstNumber">The name of the first number being checked.</param>
+        /// <param name="fieldNameSecondNumber">The name of the first number being checked.</param>
+        /// <returns>True if the numbers are equal, otherwise false.</returns>
+        public static bool CheckEqualityOfTwoNumbers(Object thisObject, float firstNumberToCheck, float secondNumberToCheck, string fieldNameFirstNumber, string fieldNameSecondNumber)
+        {
+            bool error = false;
+            if (firstNumberToCheck != secondNumberToCheck)
+            {
+                IboshDebugger.LogWarning($"{fieldNameFirstNumber} must be equal to {fieldNameSecondNumber}.", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
+                error = true;
+            }
             return error;
         }
     }
