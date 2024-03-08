@@ -23,6 +23,7 @@ namespace IboshEngine.Editor.ScriptableObjectGenerator
             ScriptableObjectGenerator window =
                 (ScriptableObjectGenerator)GetWindowWithRect(typeof(ScriptableObjectGenerator),
                     new Rect(0, 0, 250, 500));
+            window.titleContent = new("Scriptable Object Generator");
             window.Show();
         }
 
@@ -55,12 +56,13 @@ namespace IboshEngine.Editor.ScriptableObjectGenerator
                 if (EditorGUI.EndChangeCheck()) GUI.tooltip = "";
 
                 if (GUILayout.Button("Scan for Scriptable Object Classes")) ScanForScriptableObjectClasses();
+                
                 EditorGUI.indentLevel--;
             }
             EditorGUILayout.EndFadeGroup();
 
             if (_scriptableObjectTypes is null) return;
-
+            
             EditorGUILayout.Space();
 
             EditorGUILayout.BeginVertical("Box");
