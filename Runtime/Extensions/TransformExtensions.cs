@@ -182,7 +182,7 @@ namespace IboshEngine.Runtime.Extensions
         }
         
         /// <summary>
-        /// Extension method to rotate locally the object on the X-axis.
+        /// Extension method to rotate the object on the X-axis locally.
         /// </summary>
         /// <param name="transform">The Transform component of the object.</param>
         /// <param name="angle">The angle of rotation in degrees.</param>>
@@ -192,7 +192,7 @@ namespace IboshEngine.Runtime.Extensions
         }
 
         /// <summary>
-        /// Extension method to rotate locally the object on the Y-axis.
+        /// Extension method to rotate the object on the Y-axis locally.
         /// </summary>
         /// <param name="transform">The Transform component of the object.</param>
         /// <param name="angle">The angle of rotation in degrees.</param>>
@@ -202,7 +202,7 @@ namespace IboshEngine.Runtime.Extensions
         }
         
         /// <summary>
-        /// Extension method to rotate locally the object on the Z-axis.
+        /// Extension method to rotate the object on the Z-axis locally.
         /// </summary>
         /// <param name="transform">The Transform component of the object.</param>
         /// <param name="angle">The angle of rotation in degrees.</param>>
