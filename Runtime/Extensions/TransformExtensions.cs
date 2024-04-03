@@ -180,7 +180,37 @@ namespace IboshEngine.Runtime.Extensions
         {
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
-            
+        
+        /// <summary>
+        /// Extension method to rotate locally the object on the X-axis.
+        /// </summary>
+        /// <param name="transform">The Transform component of the object.</param>
+        /// <param name="angle">The angle of rotation in degrees.</param>>
+        public static void RotateLocalX(this Transform transform, float angle)
+        {
+            transform.localRotation = Quaternion.Euler(angle, 0f, 0f);
+        }
+
+        /// <summary>
+        /// Extension method to rotate locally the object on the Y-axis.
+        /// </summary>
+        /// <param name="transform">The Transform component of the object.</param>
+        /// <param name="angle">The angle of rotation in degrees.</param>>
+        public static void RotateLocalY(this Transform transform, float angle)
+        {
+            transform.localRotation = Quaternion.Euler(0f, angle, 0f);
+        }
+        
+        /// <summary>
+        /// Extension method to rotate locally the object on the Z-axis.
+        /// </summary>
+        /// <param name="transform">The Transform component of the object.</param>
+        /// <param name="angle">The angle of rotation in degrees.</param>>
+        public static void RotateLocalZ(this Transform transform, float angle)
+        {
+            transform.localRotation = Quaternion.Euler(0f, 0f, angle);
+        }
+        
         /// <summary>
         /// Extension method to reset the position, rotation, and scale of the object.
         /// </summary>
@@ -188,9 +218,19 @@ namespace IboshEngine.Runtime.Extensions
         public static void ResetTransform(this Transform transform)
         {
             transform.position = Vector3.zero;
-            transform.rotation = Quaternion.identity;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.localScale = Vector3.one;
         }
         
+        /// <summary>
+        /// Extension method to reset the localPosition, localRotation, and scale of the object.
+        /// </summary>
+        /// <param name="transform">The Transform component of the object.</param>
+        public static void ResetLocalTransform(this Transform transform)
+        {
+            transform.localPosition = Vector3.zero;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.localScale = Vector3.one;
+        }
     }
 }
