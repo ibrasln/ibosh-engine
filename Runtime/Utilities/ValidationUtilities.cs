@@ -19,12 +19,10 @@ namespace IboshEngine.Runtime.Utilities
         /// <returns>True if the string is empty, otherwise false.</returns>
         public static bool CheckEmptyString(Object thisObject, string fieldName, string stringToCheck)
         {
-            if (stringToCheck == "")
-            {
-                IboshDebugger.LogWarning($"{fieldName} is empty and must contain a value in object {thisObject.name}", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
-                return true;
-            }
-            return false;
+            if (stringToCheck != "") return false;
+            
+            IboshDebugger.LogWarning($"{fieldName} is empty and must contain a value in object {thisObject.name}", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
+            return true;
         }
 
         /// <summary>
@@ -36,12 +34,10 @@ namespace IboshEngine.Runtime.Utilities
         /// <returns>True if the object reference is null, otherwise false.</returns>
         public static bool CheckNullValue(Object thisObject, string fieldName, Object objectToCheck)
         {
-            if (objectToCheck == null)
-            {
-                IboshDebugger.LogWarning($"{fieldName} is null and must contain a value in object {thisObject.name}", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
-                return true;
-            }
-            return false;
+            if (objectToCheck != null) return false;
+            
+            IboshDebugger.LogWarning($"{fieldName} is null and must contain a value in object {thisObject.name}", thisObject.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Yellow);
+            return true;
         }
 
         /// <summary>

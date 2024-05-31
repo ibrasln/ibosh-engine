@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using IboshEngine.Runtime.Debugger;
 using UnityEngine;
 
 namespace IboshEngine.Runtime.Extensions
@@ -19,11 +20,14 @@ namespace IboshEngine.Runtime.Extensions
         /// <param name="audioClips">An array of AudioClip options to choose from.</param>
         public static void PlayRandomAudio(this AudioSource audioSource, AudioClip[] audioClips)
         {
-            if (audioClips.Length > 0)
+            if (audioClips.IsNullOrEmpty())
             {
-                int randomIndex = Random.Range(0, audioClips.Length);
-                audioSource.PlayOneShot(audioClips[randomIndex]);
+                IboshDebugger.LogError($"Audio clips array is null or empty!", audioSource.name, IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Red);
+                return;
             }
+            
+            int randomIndex = Random.Range(0, audioClips.Length);
+            audioSource.PlayOneShot(audioClips[randomIndex]);
         }
     }
 }
