@@ -40,7 +40,7 @@ namespace IboshEngine.Runtime.StateMachine
             DoChecks();
         }
 
-        public void AnimationFinishTrigger() => isAnimationFinished = true;
+        public virtual void AnimationFinishTrigger() => isAnimationFinished = true;
     }
     
     public abstract class State<T1> : State where T1: MonoBehaviour 
