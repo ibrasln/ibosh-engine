@@ -217,8 +217,7 @@ namespace IboshEngine.Runtime.Extensions
         /// <param name="transform">The Transform component of the object.</param>
         public static void ResetTransform(this Transform transform)
         {
-            transform.position = Vector3.zero;
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.SetPositionAndRotation(Vector3.zero, Quaternion.Euler(0, 0, 0));
             transform.localScale = Vector3.one;
         }
         
